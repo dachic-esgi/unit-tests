@@ -1,0 +1,6 @@
+vendor/
+cours/
+Instructions.pdf
+SyllabusDuProjet.pdf
+*.lock
+*.json
