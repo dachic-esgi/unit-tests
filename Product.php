@@ -38,7 +38,7 @@ class Product
      */ 
     public function set_name($_name)
     {
-        $this->_name = $_name;
+        $this->_name = (string)$_name;
 
         return $this;
     }

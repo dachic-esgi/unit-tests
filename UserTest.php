@@ -8,7 +8,7 @@ class UserTest extends TestCase
     
     public function setUp()
     {
-        $this->user = new User("Driss","Bellaroussi",23,"adam.sow97@gmail.com");
+        $this->user = new User("Driss","Bellaroussi",23,"driss@gmail.com");
     }
 
     public function testIsValid() {
@@ -16,7 +16,7 @@ class UserTest extends TestCase
     }
 
     //firstname and lastname required
-    public function testIsNotValidFirstname()
+    public function testIsNotValidName()
     {
         $this->user->set_firstname("");
         $this->user->set_lastname("");
@@ -32,6 +32,7 @@ class UserTest extends TestCase
         $this->assertFalse($this->user->isValid());
     }
 
+    //user must 13 years old or more
     public function testIsNotValidAge()
     {
         $this->user->set_age(10);

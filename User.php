@@ -52,7 +52,7 @@ class User
      */ 
     public function set_firstname($_firstname)
     {
-        $this->_firstname = $_firstname;
+        $this->_firstname = (string)$_firstname;
 
         return $this;
     }
@@ -72,7 +72,7 @@ class User
      */ 
     public function set_lastname($_lastname)
     {
-        $this->_lastname = $_lastname;
+        $this->_lastname = (string)$_lastname;
 
         return $this;
     }

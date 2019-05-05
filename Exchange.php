@@ -27,6 +27,8 @@ class Exchange
 
     public function save() 
     {
+        $this->isMinorReceiver();
+
         if($this->_receiver->isValid() && $this->_owner->isValid() && $this->_product->isValid() && $this->AreDatesCorrect())
         {
             return $this->_dbConnection->saveExchange($this);
@@ -40,7 +42,7 @@ class Exchange
     public function AreDatesCorrect()
     {
         $date = date('d-m-Y');
-        if(strtotime($this->_startDate) > $date && strtotime($this->_startDate) < strtotime($this->_endDate))
+        if(strtotime($this->_startDate) > strtotime($date) && strtotime($this->_startDate) < strtotime($this->_endDate))
         {
             return true;
         }
@@ -51,9 +53,9 @@ class Exchange
     }
 
     public function isMinorReceiver() {
-        if($this->_receiver < 18)
+        if($this->_receiver->get_age() < 18)
         {
-            $this->_emailSender->sendEmail();
+            return $this->_emailSender->sendEmail(null, null);
         };
     }
     
